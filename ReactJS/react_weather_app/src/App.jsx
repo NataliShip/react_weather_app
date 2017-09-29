@@ -6,7 +6,7 @@ import './App.css';
 class App extends Component {
 	state = {
 		city: 'Kirov',
-		temperature: '10'
+		temperature: '12'
 	}
 
 	render() {
