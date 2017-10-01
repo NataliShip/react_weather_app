@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
+@import url(weather/css/weather-icons.min.css);
 
 body {
   margin: 0;

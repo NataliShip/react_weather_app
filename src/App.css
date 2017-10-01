@@ -10,6 +10,66 @@
 	transition: background-color 2s ease 1s, color 2s ease 1s;
 }
 
+.app[data-hour='0'],
+.app[data-hour='1'],
+.app[data-hour='2'],
+.app[data-hour='3'] {
+	background-color: #362942;
+	color: white;
+}
+
+.app[data-hour='4'],
+.app[data-hour='5'],
+.app[data-hour='6'],
+.app[data-hour='7'] {
+	background-color: #82bfe5;
+	color: #2F2F2F;
+}
+
+.app[data-hour='8'],
+.app[data-hour='9'],
+.app[data-hour='10'],
+.app[data-hour='11'] {
+	background-color: #c3e9f7;
+	color: #2F2F2F;
+}
+
+.app[data-hour='12'],
+.app[data-hour='13']{
+	background-color: #efe176;
+	color: #2F2F2F;
+}
+
+.app[data-hour='14'],
+.app[data-hour='15'] {
+	background-color: #efad51;
+	color: #2F2F2F;
+}
+
+.app[data-hour='16'],
+.app[data-hour='17'],
+.app[data-hour='18'],
+.app[data-hour='19'] {
+	background-color: #a33737;
+	color: white;
+}
+
+.app[data-hour='20'],
+.app[data-hour='21'],
+.app[data-hour='22'],
+.app[data-hour='23'] {
+	background-color: #192f49;
+	color: white;
+}
+
+.weather-icon {
+	width: 100px;
+	height: 100px;
+	font-size: 90px;
+	text-align: center;
+	margin:0 auto;
+}
+
 .weather-details {
 	text-align: center;
 	text-transform: uppercase;

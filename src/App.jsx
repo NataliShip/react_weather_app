@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import WeatherDetails from './components/WeatherDetails';
 
+import WeatherDetails from './components/WeatherDetails';
+import WeatherIcon from './components/WeatherIcon';
 import './App.css';
 
 class App extends Component {
 	state = {
+		icon: '',
+		time: 1,
+		minutes: '',
 		city: '',
 		temperature: '',
-		fetching: true
+		fetching: true,
+		weatherCode: ''
 	}
 
 	componentDidMount() {
@@ -33,6 +38,7 @@ class App extends Component {
 					minutes,
 					city,
 					temperature: Math.round(data.main.temp),
+					weatherCode: data.weather[0].id,
 					fetching: false
 				});
 			})
@@ -47,16 +53,22 @@ class App extends Component {
 	}
 
 	render() {
-		const { city, temperature, fetching } = this.state;
+		const { city, icon, time, minutes, temperature, fetching, weatherCode } = this.state;
 		return fetching ?
 			<div className="app">Загрузка...</div>
 			:
-			<div className="app">
+			<div className="app" data-hour={time}>
 				<div className="widget">
-					<div>Погода сегодня</div>
+					<WeatherIcon
+						icon={icon}
+						weatherCode={weatherCode}
+						time={time}/>
 					<WeatherDetails
 						temperature={temperature}
 						city={city}/>
+				</div>
+				<div className="time">
+					Последнее обновление {time}:{minutes}
 				</div>
 			</div>;
 	}

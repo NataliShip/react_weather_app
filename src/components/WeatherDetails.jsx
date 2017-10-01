@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class WeatherDetails extends Component{
-	render( city, temperature ){
+	render(){
 		return(
 			<div className="weather-details">
 				<div className="city">{this.props.city}</div>
