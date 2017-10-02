@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import WeatherDetails from './components/WeatherDetails';
-import WeatherIcon from './components/WeatherIcon';
 import './App.css';
+import WeatherIcon from './components/WeatherIcon';
+import WeatherDetails from './components/WeatherDetails';
+import Moscow from './Moscow';
+import SaintPetersburg from './Saint-Peterburg';
 
 class App extends Component {
 	state = {
@@ -11,8 +13,11 @@ class App extends Component {
 		minutes: '',
 		city: '',
 		temperature: '',
-		fetching: true,
-		weatherCode: ''
+		humid:'',
+		weatherCode: '',
+		descript:'',
+		windSpeed:'',
+		fetching: true
 	}
 
 	componentDidMount() {
@@ -38,7 +43,10 @@ class App extends Component {
 					minutes,
 					city,
 					temperature: Math.round(data.main.temp),
+					humid: Math.round(data.main.humidity),
+					descript: data.weather[0].description,
 					weatherCode: data.weather[0].id,
+					windSpeed: data.wind.speed,
 					fetching: false
 				});
 			})
@@ -53,7 +61,8 @@ class App extends Component {
 	}
 
 	render() {
-		const { city, icon, time, minutes, temperature, fetching, weatherCode } = this.state;
+		const {fetching, icon, time, minutes, city, temperature, humid, descript, windSpeed, weatherCode} = this.state;
+
 		return fetching ?
 			<div className="app">Загрузка...</div>
 			:
@@ -64,16 +73,20 @@ class App extends Component {
 						weatherCode={weatherCode}
 						time={time}/>
 					<WeatherDetails
+						city={city}
 						temperature={temperature}
-						city={city}/>
+						humidity={humid}
+						descript={descript}
+						windSpeed={windSpeed}/>
 				</div>
+				<Moscow />
+				<SaintPetersburg/>
 				<div className="time">
 					Последнее обновление {time}:{minutes}
 				</div>
 			</div>;
+
 	}
-
 }
+
 export default App;
-
-

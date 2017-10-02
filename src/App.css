@@ -85,8 +85,27 @@
 	margin-bottom:15px;
 }
 
+.weather-details .humidity {
+	font-size:16px;
+	text-transform: none;
+	padding-bottom:5px;
+}
+
+.weather-details .descript {
+	font-size:16px;
+	padding-bottom:8px;
+}
+
+.weather-details .windSpeed{
+	text-transform: none;
+}
+
 .widget{
 	display: flex;
 	flex-direction: column;
 	margin:50px;
+}
+.time{
+	width:100%;
+	text-align: center;
 }
