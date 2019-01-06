@@ -6,4 +6,4 @@
 **DEMO: http://reactapp.ru/react-weather/**
 
 
-![Alt text](http://reactapp.ru/img/weather.jpg "Optional title")
+![Alt text](http://reactapp.ru/img/weather.jpg "Приложение погоды на React")
