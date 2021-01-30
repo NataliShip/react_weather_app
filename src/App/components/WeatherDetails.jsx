@@ -15,9 +15,9 @@ const WeatherDetails = ({city, temperature, humidity, descript, windSpeed}) => {
 
 WeatherDetails.propTypes = {
 	city: PropTypes.string.isRequired,
-	temperature: PropTypes.number,
-	humid: PropTypes.number,
 	descript: PropTypes.string.isRequired,
+	temperature: PropTypes.number,
+	humidity: PropTypes.number,
 	windSpeed: PropTypes.number
 }
 

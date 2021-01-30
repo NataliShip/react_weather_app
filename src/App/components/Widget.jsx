@@ -1,33 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import WeatherIcon from './WeatherIcon'
 import WeatherDetails from './WeatherDetails'
+import { fetchWeatherData } from '../../helpers'
 
-const Widget = ({weatherCode, time, city, temperature, humid, descript, windSpeed}) => {
+const initialState = {
+  time: 0,
+  temperature: 0,
+  humid: 0,
+  weatherCode: 0,
+  descript:'',
+  windSpeed: 0,
+}
+
+const Widget = ({city}) => {
+  const [data, setData] = useState({...initialState})
+
+  useEffect(() => {
+    fetchWeatherData(city, setData)
+  }, [])
+
   return (
     <div className="widget">
       <WeatherIcon
-        weatherCode={weatherCode}
-        time={time}/>
+        weatherCode={data.weatherCode}
+        time={data.time}/>
       <WeatherDetails
         city={city}
-        temperature={temperature}
-        humidity={humid}
-        descript={descript}
-        windSpeed={windSpeed}/>
+        temperature={data.temperature}
+        humidity={data.humid}
+        descript={data.descript}
+        windSpeed={data.windSpeed}/>
     </div>
   )
 }
 
 Widget.propTypes = {
-  icon: PropTypes.string,
-  weatherCode: PropTypes.number,
-  time: PropTypes.number,
-  city: PropTypes.string.isRequired,
-  temperature: PropTypes.number,
-  humid: PropTypes.number,
-  descript: PropTypes.string.isRequired,
-  windSpeed: PropTypes.number
+  city: PropTypes.string.isRequired
 }
 
 export default Widget
