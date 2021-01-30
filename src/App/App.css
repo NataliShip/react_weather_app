@@ -7,6 +7,7 @@
 	flex-wrap: wrap;
 	background: #373056;
 	color: white;
+	font-size: 16px;
 	transition: background-color 2s ease 1s, color 2s ease 1s;
 }
 
@@ -86,14 +87,14 @@
 }
 
 .weather-details .humidity {
-	font-size:16px;
+	font-size: 16px;
 	text-transform: none;
-	padding-bottom:5px;
+	padding-bottom: 5px;
 }
 
 .weather-details .descript {
-	font-size:16px;
-	padding-bottom:8px;
+	font-size: 16px;
+	padding-bottom: 8px;
 }
 
 .weather-details .windSpeed{
@@ -103,9 +104,10 @@
 .widget{
 	display: flex;
 	flex-direction: column;
-	margin:50px;
+	margin: 50px;
 }
+
 .time{
-	width:100%;
+	width: 100%;
 	text-align: center;
 }

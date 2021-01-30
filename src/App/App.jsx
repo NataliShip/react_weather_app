@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
-
-import './App.css';
-import WeatherIcon from './components/WeatherIcon';
-import WeatherDetails from './components/WeatherDetails';
-import Moscow from './Moscow';
-import SaintPetersburg from './Saint-Peterburg';
+import React, {Component} from 'react'
+import WeatherIcon from './components/WeatherIcon'
+import WeatherDetails from './components/WeatherDetails'
+import './App.css'
 
 class App extends Component {
 	state = {
@@ -48,16 +45,16 @@ class App extends Component {
 					weatherCode: data.weather[0].id,
 					windSpeed: data.wind.speed,
 					fetching: false
-				});
+				})
 			})
-			.catch(error => console.error(error));
+			.catch(error => console.error(error))
 	}
 
 	fetchIP = () => {
-		fetch('//freegeoip.net/json/')
+		fetch('https://freegeoip.app/json/')
 			.then(response => response.json())
 			.then(({city}) => this.fetchWeatherData(city))
-			.catch(error => console.log(error));
+			.catch(error => console.log(error))
 	}
 
 	render() {
@@ -79,8 +76,6 @@ class App extends Component {
 						descript={descript}
 						windSpeed={windSpeed}/>
 				</div>
-				<Moscow />
-				<SaintPetersburg/>
 				<div className="time">
 					Последнее обновление {time}:{minutes}
 				</div>
@@ -89,4 +84,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default App
