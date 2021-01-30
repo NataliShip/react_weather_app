@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import WeatherIcon from './components/WeatherIcon'
-import WeatherDetails from './components/WeatherDetails'
+import Widget from './components/Widget'
 import './App.css'
+
+const cities = ['Москва', 'Санкт Петербург']
 
 class App extends Component {
 	state = {
-		icon: '',
 		time: 1,
 		minutes: '',
 		city: '',
@@ -18,22 +18,24 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.fetchIP();
+		this.fetchIP()
 	}
 
 	fetchWeatherData = city => {
-		const baseUrl = `http://api.openweathermap.org`;
-		const path = `/data/2.5/weather`;
-		const appId = `0ce0696e903175c9d64f88fccfa096a9`;
-		const query = `units=metric&lang=ru&appid=${appId}`;
+		const baseUrl = `http://api.openweathermap.org`
+		const path = `/data/2.5/weather`
+		const appId = `0ce0696e903175c9d64f88fccfa096a9`
+		const query = `units=metric&lang=ru&appid=${appId}`
 
 		fetch(`${baseUrl}${path}?q=${city}&${query}`)
 			.then(response => response.json())
 			.then(data => {
-				const date = new Date();
-				const time = date.getHours();
-				let minutes = date.getMinutes();
-				if (minutes<10) {minutes = '0'+ minutes}
+				const date = new Date()
+				const time = date.getHours()
+				let minutes = date.getMinutes()
+				if (minutes < 10) {
+					minutes = '0'+ minutes
+				}
 
 				this.setState({
 					time,
@@ -58,29 +60,37 @@ class App extends Component {
 	}
 
 	render() {
-		const {fetching, icon, time, minutes, city, temperature, humid, descript, windSpeed, weatherCode} = this.state;
+		const {
+			fetching,
+			time,
+			minutes,
+			city,
+			temperature,
+			humid,
+			descript,
+			windSpeed,
+			weatherCode
+		} = this.state
 
-		return fetching ?
-			<div className="app">Загрузка...</div>
-			:
-			<div className="app" data-hour={time}>
-				<div className="widget">
-					<WeatherIcon
-						icon={icon}
-						weatherCode={weatherCode}
-						time={time}/>
-					<WeatherDetails
-						city={city}
-						temperature={temperature}
-						humidity={humid}
-						descript={descript}
-						windSpeed={windSpeed}/>
-				</div>
+		if (!cities.includes(city) && city) {
+			cities.push(city)
+		}
+
+		return fetching
+			? <div className="app">Загрузка...</div>
+			: <div className="app" data-hour={time}>
+				{
+					cities.map(c =>
+						<Widget
+							key={c}
+							{...{weatherCode, time, city: c, temperature, humid, descript, windSpeed}}
+						/>
+					)
+				}
 				<div className="time">
 					Последнее обновление {time}:{minutes}
 				</div>
-			</div>;
-
+			</div>
 	}
 }
 

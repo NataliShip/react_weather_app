@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class WeatherDetails extends Component{
-	render(){
-		return(
-			<div className="weather-details">
-				<div className="city">{this.props.city}</div>
-				<div className="temperature">{this.props.temperature} &deg; C</div>
-				<div className="descript">{this.props.descript}</div>
-				<div className="humidity">Влажность {this.props.humidity} %</div>
-				<div className="windSpeed">Скорость ветра {this.props.windSpeed} м/c</div>
-			</div>
-		)
-	}
+const WeatherDetails = ({city, temperature, humidity, descript, windSpeed}) => {
+	return(
+		<div className="weather-details">
+			<div className="city">{city}</div>
+			<div className="temperature">{temperature} &deg; C</div>
+			<div className="descript">{descript}</div>
+			<div className="humidity">Влажность {humidity} %</div>
+			<div className="windSpeed">Скорость ветра {windSpeed} м/c</div>
+		</div>
+	)
 }
-export default WeatherDetails;
 
+WeatherDetails.propTypes = {
+	city: PropTypes.string.isRequired,
+	temperature: PropTypes.number,
+	humid: PropTypes.number,
+	descript: PropTypes.string.isRequired,
+	windSpeed: PropTypes.number
+}
+
+export default WeatherDetails

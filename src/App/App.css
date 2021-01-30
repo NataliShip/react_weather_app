@@ -1,5 +1,7 @@
 .app {
 	height: 100%;
+	padding: 30px;
+	box-sizing: border-box;
 	display: flex;
 	overflow: auto;
 	align-items: center;
